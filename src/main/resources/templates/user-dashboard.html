@@ -35,25 +35,33 @@
 <!-- Summary Cards -->
 <div class="row mb-4">
     <div class="col-md-4">
-        <div class="card bg-primary text-white shadow">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white fw-semibold">
+                My Complaints
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">My Complaints</h6>
                 <h3 th:text="${totalCount}">0</h3>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
-        <div class="card bg-success text-white shadow">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white fw-semibold">
+                OPEN
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">Open</h6>
                 <h3 th:text="${openCount}">0</h3>
             </div>
         </div>
     </div>
+
     <div class="col-md-4">
-        <div class="card bg-danger text-white shadow">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white fw-semibold">
+                CLOSED
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">Closed</h6>
                 <h3 th:text="${closedCount}">0</h3>
             </div>
         </div>
