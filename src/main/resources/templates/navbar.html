@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container-fluid">
+
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="bi bi-tools"></i> OCMS
+        </a>
+
+        <div class="d-flex align-items-center gap-2 ms-auto">
+
+            <!-- THEME TOGGLE -->
+            <button onclick="toggleTheme()"
+                    class="btn btn-outline-light btn-sm"
+                    title="Toggle Light/Dark">
+                <i class="bi bi-moon-stars"></i>
+            </button>
+
+            <!-- Role Badge -->
+            <span th:if="${loggedInUser != null}"
+                  class="badge"
+                  th:classappend="${loggedInUser.role == 'ADMIN'} ? 'bg-danger' : 'bg-primary'"
+                  th:text="${loggedInUser.role}">
+            </span>
+
+            <!-- USER DASHBOARD -->
+            <a th:if="${loggedInUser != null and loggedInUser.role == 'USER'}"
+               href="/user/dashboard"
+               class="btn btn-outline-light btn-sm">
+                User
+            </a>
+
+            <!-- ADMIN DASHBOARD -->
+            <a th:if="${loggedInUser != null and loggedInUser.role == 'ADMIN'}"
+               href="/admin/dashboard"
+               class="btn btn-outline-light btn-sm">
+                Admin
+            </a>
+
+            <!-- DELETE ACCOUNT -->
+            <form th:if="${loggedInUser != null}"
+                  th:action="@{/account/delete}"
+                  method="post"
+                  onsubmit="return confirm('Delete account permanently?')">
+                <button class="btn btn-outline-danger btn-sm">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </form>
+
+            <!-- LOGOUT -->
+            <a th:if="${loggedInUser != null}"
+               href="/logout"
+               class="btn btn-warning btn-sm">
+                <i class="bi bi-box-arrow-right"></i>
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

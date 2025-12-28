@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/theme.css">
+    <script src="/theme.js"></script>
+
+</head>
+
+<!-- Navbar -->
+<div th:replace="navbar :: body"></div>
+
+<body class="container mt-4 px-2 px-md-4">
+
+<h3 class="mb-3">
+    <i class="bi bi-speedometer2"></i> Admin Dashboard
+</h3>
+
+<!-- Alerts -->
+<div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show">
+    <span th:text="${successMessage}"></span>
+    <button class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+
+<div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show">
+    <span th:text="${errorMessage}"></span>
+    <button class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body">
+                <h6 class="text-uppercase fw-semibold">Total</h6>
+                <h3 th:text="${totalCount}">0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body">
+                <h6 class="text-uppercase fw-semibold">Open</h6>
+                <h3 th:text="${openCount}">0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark shadow">
+            <div class="card-body">
+                <h6 class="text-uppercase fw-semibold">In Progress</h6>
+                <h3 th:text="${inProgressCount}">0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white shadow">
+            <div class="card-body">
+                <h6 class="text-uppercase fw-semibold">Closed</h6>
+                <h3 th:text="${closedCount}">0</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter + Export -->
+<div class="d-flex justify-content-between align-items-end mb-4">
+    <form method="get" action="/admin/dashboard" class="row g-3">
+        <div class="col-md-4">
+            <label>Status</label>
+            <select name="status" class="form-select">
+                <option value="">All</option>
+                <option value="OPEN" th:selected="${selectedStatus=='OPEN'}">OPEN</option>
+                <option value="IN_PROGRESS" th:selected="${selectedStatus=='IN_PROGRESS'}">IN_PROGRESS</option>
+                <option value="CLOSED" th:selected="${selectedStatus=='CLOSED'}">RESOLVED</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label>Username</label>
+            <input name="username" class="form-control"
+                   th:value="${enteredUsername}" placeholder="Enter username">
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+            <button class="btn btn-primary w-100">
+                <i class="bi bi-funnel"></i> Filter
+            </button>
+        </div>
+    </form>
+
+    <a href="/api/admin/complaints/export" class="btn btn-outline-success">
+        <i class="bi bi-download"></i> Export CSV
+    </a>
+</div>
+
+<!-- Empty State -->
+<div th:if="${complaints.size() == 0}" class="alert alert-info text-center">
+    No complaints found.
+</div>
+
+<!-- Table -->
+<div class="table-responsive">
+    <table th:if="${complaints.size() > 0}"
+           class="table table-hover table-bordered align-middle shadow-sm">
+        <thead class="table-dark text-center">
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Reply</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${complaints}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.user.username}"></td>
+            <td th:text="${c.description}"></td>
+
+            <td class="text-center">
+                <span class="badge bg-success" th:if="${c.status=='OPEN'}">OPEN</span>
+                <span class="badge bg-warning text-dark" th:if="${c.status=='IN_PROGRESS'}">IN PROGRESS</span>
+                <span class="badge bg-danger" th:if="${c.status=='CLOSED'}">CLOSED</span>
+            </td>
+
+            <td>
+                <form th:action="@{/admin/complaints/{id}/reply(id=${c.id})}" method="post">
+                <textarea name="reply" class="form-control mb-1" rows="2"
+                          placeholder="Reply to user" required></textarea>
+                    <button class="btn btn-success btn-sm w-100">
+                        <i class="bi bi-send"></i> Send
+                    </button>
+                </form>
+            </td>
+
+            <td class="text-center">
+                <form th:if="${c.status!='CLOSED'}"
+                      th:action="@{/admin/complaints/{id}/close(id=${c.id})}" method="post">
+                    <button class="btn btn-danger btn-sm w-100">
+                        <i class="bi bi-x-circle"></i> Close
+                    </button>
+                </form>
+                <button th:if="${c.status=='CLOSED'}"
+                        class="btn btn-secondary btn-sm w-100" disabled>
+                    Closed
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Footer -->
+<div th:replace="footer :: body"></div>
+
+</body>
+</html>

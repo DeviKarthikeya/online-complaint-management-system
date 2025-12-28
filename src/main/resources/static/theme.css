@@ -1,0 +1,29 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --navbar-bg: #212529;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --navbar-bg: #000000;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+.card,
+.table,
+.alert {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+.navbar {
+    background-color: var(--navbar-bg) !important;
+}
