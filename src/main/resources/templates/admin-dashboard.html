@@ -39,38 +39,50 @@
 <!-- Summary Cards -->
 <div class="row mb-4">
     <div class="col-md-3">
-        <div class="card bg-primary text-white shadow">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white fw-semibold">
+                TOTAL
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">Total</h6>
                 <h3 th:text="${totalCount}">0</h3>
             </div>
         </div>
     </div>
+
     <div class="col-md-3">
-        <div class="card bg-success text-white shadow">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white fw-semibold">
+                OPEN
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">Open</h6>
                 <h3 th:text="${openCount}">0</h3>
             </div>
         </div>
     </div>
+
     <div class="col-md-3">
-        <div class="card bg-warning text-dark shadow">
+        <div class="card shadow">
+            <div class="card-header bg-warning text-dark fw-semibold">
+                IN PROGRESS
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">In Progress</h6>
                 <h3 th:text="${inProgressCount}">0</h3>
             </div>
         </div>
     </div>
+
     <div class="col-md-3">
-        <div class="card bg-danger text-white shadow">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white fw-semibold">
+                CLOSED
+            </div>
             <div class="card-body">
-                <h6 class="text-uppercase fw-semibold">Closed</h6>
                 <h3 th:text="${closedCount}">0</h3>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Filter + Export -->
 <div class="d-flex justify-content-between align-items-end mb-4">
