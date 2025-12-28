@@ -31,13 +31,13 @@ A role-based web application to register, track, and manage complaints efficient
 git clone https://github.com/DeviKarthikeya/online-complaint-management-system.git
 cd online-complaint-management-system
 
-###2️⃣ Configure Database
+2️⃣ Configure Database
 Update application.properties with your MySQL credentials.
 
-###3️⃣ Run the application
+3️⃣ Run the application
 mvn spring-boot:run
 
-###4️⃣ Open in browser
+4️⃣ Open in browser
 http://localhost:8080
 
 
