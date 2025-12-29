@@ -56,36 +56,37 @@ https://ocms-3qk4.onrender.com
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Project Structure
 
-```text
+```
 ComplaintManagementSystem
 ├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com
-│   │   │       └── example
-│   │   │           └── complaintmanagement
-│   │   │               ├── controller
-│   │   │               ├── service
-│   │   │               ├── repository
-│   │   │               └── model
-│   │   └── resources
-│   │       ├── templates
-│   │       ├── static
-│   │       │   ├── css
-│   │       │   └── js
-│   │       └── application.properties
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── example
+│       │           └── complaintmanagement
+│       │               ├── controller
+│       │               ├── service
+│       │               ├── repository
+│       │               └── model
+│       └── resources
+│           ├── templates
+│           ├── static
+│           │   ├── css
+│           │   └── js
+│           └── application.properties
 ├── Dockerfile
 ├── pom.xml
 └── README.md
+```
 
 ---
 
-
 ## ⚙️ Environment Variables (Render)
 
-Configure the following Environment Variables in Render:
+Configure the following **Environment Variables** in **Render**:
+
 
 SPRING_DATASOURCE_URL=jdbc:postgresql://<HOST>:5432/<DB_NAME>
 SPRING_DATASOURCE_USERNAME=<DB_USERNAME>
@@ -119,6 +120,7 @@ This project uses Docker for deployment.
 - Maven
 - PostgreSQL
 
+---
 
 ### 🌐 Deployment
 
@@ -128,6 +130,8 @@ Uses Docker-based deployment
 
 PostgreSQL hosted on Render
 
+---
+
 ### 🔒 Security Notes
 
 Session-based authentication
@@ -135,6 +139,8 @@ Session-based authentication
 Role-based access (Admin / User)
 
 Environment-based configuration
+
+---
 
 ### 🧑‍🎓 Author
 K.Devi Karthikeya
