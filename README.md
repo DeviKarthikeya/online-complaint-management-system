@@ -5,6 +5,11 @@ The system allows users to raise complaints and admins to manage, respond, and t
 
 ---
 
+### Application runs at
+
+https://ocms-3qk4.onrender.com
+
+
 ## 🚀 Features
 
 ### 👤 User Module
@@ -54,22 +59,22 @@ The system allows users to raise complaints and admins to manage, respond, and t
 ## 🗂️ Project Structure
 
 ComplaintManagementSystem
-├── src/main/java
-│ └── com.example.complaintmanagement
-│ ├── controller
-│ ├── service
-│ ├── repository
-│ └── model
-├── src/main/resources
-│ ├── templates
-│ ├── static
-│ │ ├── css
-│ │ └── js
-│ └── application.properties
+├── src
+│   ├── main
+│   │   ├── java/com/example/complaintmanagement
+│   │   │   ├── controller
+│   │   │   ├── service
+│   │   │   ├── repository
+│   │   │   └── model
+│   │   └── resources
+│   │       ├── templates
+│   │       ├── static
+│   │       │   ├── css
+│   │       │   └── js
+│   │       └── application.properties
 ├── Dockerfile
 ├── pom.xml
 └── README.md
-
 
 ---
 
@@ -77,15 +82,11 @@ ComplaintManagementSystem
 
 Configure the following **Environment Variables** in Render:
 
-
-
 SPRING_DATASOURCE_URL=jdbc:postgresql://<HOST>:5432/<DB_NAME>
 SPRING_DATASOURCE_USERNAME=<DB_USERNAME>
 SPRING_DATASOURCE_PASSWORD=<DB_PASSWORD>
-
 SPRING_JPA_HIBERNATE_DDL_AUTO=update
 SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
-
 PORT=8080
 
 
@@ -111,17 +112,6 @@ This project uses Docker for deployment.
 - Maven
 - PostgreSQL
 
-### Steps
-```bash
-git clone https://github.com/DeviKarthikeya/online-complaint-management-system.git
-cd online-complaint-management-system
-mvn clean package
-java -jar target/complaintmanagement-0.0.1-SNAPSHOT.jar
-
-
-Application runs at:
-
-https://ocms-3qk4.onrender.com
 
 ### 🌐 Deployment
 
