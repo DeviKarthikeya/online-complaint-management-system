@@ -58,14 +58,18 @@ https://ocms-3qk4.onrender.com
 
 ## 🗂️ Project Structure
 
+```text
 ComplaintManagementSystem
 ├── src
 │   ├── main
-│   │   ├── java/com/example/complaintmanagement
-│   │   │   ├── controller
-│   │   │   ├── service
-│   │   │   ├── repository
-│   │   │   └── model
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── complaintmanagement
+│   │   │               ├── controller
+│   │   │               ├── service
+│   │   │               ├── repository
+│   │   │               └── model
 │   │   └── resources
 │   │       ├── templates
 │   │       ├── static
@@ -80,13 +84,15 @@ ComplaintManagementSystem
 
 ## ⚙️ Environment Variables (Render)
 
-Configure the following **Environment Variables** in Render:
+Configure the following Environment Variables in Render:
 
 SPRING_DATASOURCE_URL=jdbc:postgresql://<HOST>:5432/<DB_NAME>
 SPRING_DATASOURCE_USERNAME=<DB_USERNAME>
 SPRING_DATASOURCE_PASSWORD=<DB_PASSWORD>
+
 SPRING_JPA_HIBERNATE_DDL_AUTO=update
 SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+
 PORT=8080
 
 
